@@ -1,0 +1,48 @@
+<!--code by 我是小超人 -->
+<!DOCTYPE html>
+<html> 
+<head>
+<title>新建网页</title>
+<meta charset="utf-8"/>
+<style>
+body{background: #000;}
+canvas{background: #fff;}
+</style>
+<script>
+function d2a(n){
+	return n*Math.PI/180;
+}
+window.onload=function(){
+	var oC=document.querySelector('#c1');
+	var gd=oC.getContext('2d');
+	var cx=200;
+	var cy=200;
+	var r=150;
+	var num=0;
+	var timer=null;
+
+	timer=setInterval(function(){
+		gd.clearRect(0,0,oC.width,oC.height);
+		num++;
+		gd.beginPath();
+		gd.arc(cx,cy,r,0,d2a(num),false);
+		gd.lineWidth=20;
+		var lg=gd.createLinearGradient(0,0,oC.width,oC.height);
+		lg.addColorStop(0,'red');
+		lg.addColorStop(0.25,'yellow');
+		lg.addColorStop(0.5,'green');
+		lg.addColorStop(0.75,'#000');
+		lg.addColorStop(1,'#f09');
+		gd.strokeStyle=lg;
+		gd.stroke();
+		if(num==360){
+			clearInterval(timer);
+		}
+	},16);
+};
+</script>
+</head>
+<body>
+	<canvas width="800" height="600" id="c1"></canvas>
+</body>
+</html>
