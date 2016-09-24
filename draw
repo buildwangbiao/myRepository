@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<title>新建网页</title>
+<meta charset="utf-8"/>
+<style>
+body{height:100%;background: #000;text-align: center;}
+canvas{background: #fff;}
+</style>
+<script>
+window.onload=function(){
+	var oC=document.querySelector('#c');
+	var gd=oC.getContext('2d');
+
+	gd.beginPath();
+	gd.moveTo(100,100);
+	gd.lineTo(200,100);
+	gd.lineTo(200,200);
+	gd.lineTo(100,200);
+	gd.closePath();
+	gd.strokeStyle='red';//设置描边样式要在描边前面设置
+	gd.lineWidth=5;
+	gd.stroke();
+	gd.fillStyle='green';//设置填充样式要在填充的前面设置
+	gd.fill();
+};
+</script>
+</head>
+<body>
+ <canvas width="800" height="600" id="c"></canvas>
+</body>
+</html>
